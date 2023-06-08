@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css\dark_theme.css">
     <!--<script src="scripts2.js"></script>
     
-    This is a WIP, I built the JS monolithically and will revisit to modularize and refactor.-->
+    This is a WIP, I built the JS monolithically at first and will revisit to modularize and refactor.-->
     <script src="js\logging.js"></script>
     <script src="js\utils.js"></script>
     <script src="js\calculations.js"></script>
@@ -53,7 +53,7 @@
           </tr>
           <tr>
             <td><label for="length">Length:</label></td>
-            <td><input type="number" id="length" step="any" value="0" required></td>
+            <td><input type="number" id="length" step="any" value="0" min="0" required></td>
             <td class="advanced" style="text-align: center;">+</td>
             <td class="advanced"><label for="lengthModifier">Length Modifier:</label></td>
             <td class="advanced"><input type="number" id="lengthModifier" step="any" value="0" required></td>
@@ -62,7 +62,7 @@
           </tr>
           <tr>
             <td><label for="width">Width:</label></td>
-            <td><input type="number" id="width" step="any" value="0" required></td>
+            <td><input type="number" id="width" step="any" value="0" min="0" required></td>
             <td class="advanced" style="text-align: center;">+</td>
             <td class="advanced"><label for="widthModifier">Width Modifier:</label></td>
             <td class="advanced"><input type="number" id="widthModifier" step="any" value="0"
@@ -77,7 +77,7 @@
           </tr>
           <tr>
             <td><label for="height">Height:</label></td>
-            <td><input type="number" id="height" step="any" value="0" required></td>
+            <td><input type="number" id="height" step="any" value="0" min="0" required></td>
             <td class="advanced" style="text-align: center;">+</td>
             <td class="advanced"><label for="heightModifier">Height Modifier:</label></td>
             <td class="advanced"><input type="number" id="heightModifier" step="any" value="0"
