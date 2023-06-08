@@ -29,7 +29,9 @@ body {
   #confirmation-dialog button {
     margin-right: 10px;
   }
-  
+  #alert-dialog { 
+    justify-content: center;
+  }
   select {
     min-width: 100%;
   }

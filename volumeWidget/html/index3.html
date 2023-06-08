@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">-->
     <link rel="stylesheet" type="text/css" href="css\formatting.css">
+    <!--<link rel="stylesheet" type="text/css" href="css\default_theme.css">-->
     <link rel="stylesheet" type="text/css" href="css\dark_theme.css">
-    <!--<script src="scripts2.js"></script>
-    
-    This is a WIP, I built the JS monolithically at first and will revisit to modularize and refactor.-->
+    <!--This order is important-->
     <script src="js\logging.js"></script>
     <script src="js\utils.js"></script>
     <script src="js\calculations.js"></script>
-    
   </head>
   <body>
     <div class="dialog" id="confirmation-dialog">
       <p>Are you sure you want to perform this action?</p>
       <button style="float: left;" onclick="performAction()">OK</button>
       <button style="float: right;" onclick="hideConfirmation()">Cancel</button>
+    </div>
+    <div class="dialog" id="alert-dialog">
+      <p>Cannot Have An Empty Name!</p>
+      <div style="display: flex; justify-content: center;">
+        <button style="float: left;" onclick="hideAlert()">OK</button>
+      </div>
     </div>
     <div id="content">
       <form>
@@ -80,10 +83,8 @@
             <td><input type="number" id="height" step="any" value="0" min="0" required></td>
             <td class="advanced" style="text-align: center;">+</td>
             <td class="advanced"><label for="heightModifier">Height Modifier:</label></td>
-            <td class="advanced"><input type="number" id="heightModifier" step="any" value="0"
-                required></td>
-            <td class="advanced"><button type="button" id="commitHeight" onclick="commit(event)">Commit
-                Modifier</button></td>
+            <td class="advanced"><input type="number" id="heightModifier" step="any" value="0" required></td>
+            <td class="advanced"><button type="button" id="commitHeight" onclick="commit(event)">Commit Modifier</button></td>
             <td class="advanced"><input type="checkbox" id="lockHeight" value="lockHeight"
                 title="lock row" onclick="lock(event)"></td>
           </tr>
@@ -144,7 +145,7 @@
         </div>
     </div>
     <div class="footer">
-      <div id="version"><a href="https://www.github.com" target="_blank">Version: 0.90</a></div>
+      <div id="version"><a href="https://github.com/idleDevel/Case-Volume-Tool" target="_blank">Version: 0.90</a></div>
       <div id="coffee"><a href="https://www.buymeacoffee.com/biowarejak" target="_blank">Buy Me A Coffee! :D</a></div>
     </div>
   </body>

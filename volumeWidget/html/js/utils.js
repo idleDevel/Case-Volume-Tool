@@ -135,7 +135,7 @@ function serializeInputValues() {
     // Get the input values
     var project_name = document.getElementById("project").value;
     if (project_name == "") {
-        alert("Input cannot be blank or contain only whitespace.");
+        showAlert();
         return;
     }
     var unit_l = document.getElementById("lengthUnits").value;
@@ -221,6 +221,8 @@ function hideConfirmation() {
     confirmationDialog.style.display = "none";
 }
 
+
+
 function performAction() {
     //used by: ?
     hideConfirmation();
@@ -228,6 +230,18 @@ function performAction() {
     var selected_value = input_element.value;
     pywebview.api.delete_json(selected_value);
     input_element.value = "";
+}
+
+function showAlert() {
+    //used by: ?
+    var alertDialog = document.getElementById("alert-dialog");
+    alertDialog.style.display = "block";
+}
+
+function hideAlert() {
+    //used by: ?
+    var alertDialog = document.getElementById("alert-dialog");
+    alertDialog.style.display = "none";
 }
 
 function clearField() {
