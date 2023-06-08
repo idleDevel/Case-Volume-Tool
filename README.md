@@ -15,6 +15,7 @@ Features:
 - Setting Target Volume
 - Automatic Modifiers for reaching Target Volume
 -  Hiding "advanced" features to make the menu smaller 
+
 ![image](https://github.com/idleDevel/Case-Volume-Tool/assets/20792330/55c17296-e556-4b6b-a401-23fa9222a0c3)
 
 Developing:
