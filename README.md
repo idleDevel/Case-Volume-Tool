@@ -5,7 +5,7 @@ A portable Pywebview app for helping quickly define case volume for design consi
 ## Description
 This tool started out a widget to help with my personal computer case design projects. It would have been easy enough to just use spreadsheets, but I found this was a good programming exercise and enabled me to more easily adjust values with my CAD pulled up. The "Always On Top" functionality is pretty clutch for that. 
 
-I am releasing this as free to use under GPL 3.0, but there are funding links both in the app and on the github. I've spent about 48 hours so far, so if you feel inclined please feel free to buy me a coffee :)
+I am releasing this as free to use under GPL 3.0, but there are funding links both in the app and on the github. I've spent about 50 hours as of this commit, so if you feel inclined you are welcome to buy me a coffee :)
 
 ## Features
 
