@@ -7,15 +7,15 @@ This tool started out a widget to help with my personal case design projects. It
 Features:
 
 ![image](https://github.com/idleDevel/Case-Volume-Tool/assets/20792330/1e7db816-c08d-4c95-aa2a-49b134e3f523)
-![image](https://github.com/idleDevel/Case-Volume-Tool/assets/20792330/55c17296-e556-4b6b-a401-23fa9222a0c3)
 
-> Project Loading, Saving, and Deleting
-> Always on Top toggle
-> Ability to choose units for length (mm, cm, in) and volume (mm^3, cm^3, m^3, in^3, Liters, Gallons)
-> Setting Modifiers (+ or -)
-> Setting Target Volume
-> Automatic Modifiers for reaching Target Volume
-> Hiding "advanced" features to make the menu smaller 
+- Project Loading, Saving, and Deleting
+- Always on Top toggle
+- Ability to choose units for length (mm, cm, in) and volume (mm^3, cm^3, m^3, in^3, Liters, Gallons)
+- Setting Modifiers (+ or -)
+- Setting Target Volume
+- Automatic Modifiers for reaching Target Volume
+-  Hiding "advanced" features to make the menu smaller 
+![image](https://github.com/idleDevel/Case-Volume-Tool/assets/20792330/55c17296-e556-4b6b-a401-23fa9222a0c3)
 
 Developing:
 I am developing with Python 3.10. PIP installs for webview and os.
