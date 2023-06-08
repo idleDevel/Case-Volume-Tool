@@ -2,9 +2,10 @@
 Summary:
 A portable Pywebview app for helping quickly define case volume for design considerations. 
 
+## Description
 This tool started out a widget to help with my personal case design projects. It would have been easy enough to just use spreadsheets, but I found this was a good programming exercise and enabled me to more easily adjust values with my CAD pulled up. The "Always on top" functionality is pretty clutch. 
 
-Features:
+## Features:
 
 ![image](https://github.com/idleDevel/Case-Volume-Tool/assets/20792330/1e7db816-c08d-4c95-aa2a-49b134e3f523)
 
@@ -14,9 +15,11 @@ Features:
 - Setting Modifiers (+ or -)
 - Setting Target Volume
 - Automatic Modifiers for reaching Target Volume
+  - Option to lock modifiers to prevent changing them, and
+  - Option to commit any changes to the base value
 -  Hiding "advanced" features to make the menu smaller 
 
 ![image](https://github.com/idleDevel/Case-Volume-Tool/assets/20792330/55c17296-e556-4b6b-a401-23fa9222a0c3)
 
-Developing:
+## Developing:
 I am developing with Python 3.10. PIP installs for webview and os.
