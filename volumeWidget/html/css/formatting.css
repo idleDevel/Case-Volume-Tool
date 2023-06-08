@@ -1,0 +1,65 @@
+body {
+    overflow: hidden;
+    resize: none;
+  }
+  
+  input[type="checkbox"]:hover::before {
+    content: attr(title);
+    position: absolute;
+    padding: 4px 8px;
+    top: 100%;
+    left: 0;
+    white-space: nowrap;
+    z-index: 1;
+  }
+  
+  .dialog {
+    display: none;
+    position: fixed;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  #confirmation-dialog p {
+    margin: 0 0 10px;
+  }
+  
+  #confirmation-dialog button {
+    margin-right: 10px;
+  }
+  
+  select {
+    min-width: 100%;
+  }
+  
+  #resultsDiv{
+    width: fit-content;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+  }
+  
+  #resultsDiv td{
+    min-width: 150px;
+  }
+  
+  .header button {
+    width: 100%;
+  }
+  
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 99vw;
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Space items evenly */
+    align-items: center; /* Center items vertically */
+    /* padding: 10px; Add padding for spacing */
+  }
+  
+  #coffee {
+    padding-right: 5px;
+  }
+  

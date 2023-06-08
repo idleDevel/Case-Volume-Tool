@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('path/to/fonts/roboto-regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Roboto';
+    src: url('path/to/fonts/roboto-bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+    color: #000;
+  }
+  
+  input[type="checkbox"]:hover::before {
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+  
+  .dialog {
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+  

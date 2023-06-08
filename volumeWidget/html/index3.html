@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">-->
+    <link rel="stylesheet" type="text/css" href="css\formatting.css">
+    <link rel="stylesheet" type="text/css" href="css\dark_theme.css">
+    <!--<script src="scripts2.js"></script>
+    
+    This is a WIP, I built the JS monolithically and will revisit to modularize and refactor.-->
+    <script src="js\logging.js"></script>
+    <script src="js\utils.js"></script>
+    <script src="js\calculations.js"></script>
+    
+  </head>
+  <body>
+    <div class="dialog" id="confirmation-dialog">
+      <p>Are you sure you want to perform this action?</p>
+      <button style="float: left;" onclick="performAction()">OK</button>
+      <button style="float: right;" onclick="hideConfirmation()">Cancel</button>
+    </div>
+    <div id="content">
+      <form>
+        <table class="header">
+          <tr>
+            <td><label for="project">Project:</label></td>
+            <td>
+              <input autocomplete="off" list="project_list" id="project" oninput="validateFilename(this)" onchange="loadInputValues()" oncontextmenu="clearField()" title="Type to Filter / Name. Right click to clear.">
+              <datalist id="project_list">
+                <!-- Automatically populated -->
+              </datalist>
+            </td>
+            <td><button type="button" onclick="serializeInputValues()">Save Project</button></td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="checkbox" id="alwaysOnTop" onclick="toggleOnTop()">Toggle On-Top</td>
+            <td><button type="button" onclick="showConfirmation()">Delete Project</button></td>
+          </tr>
+        </table>
+        <br>
+        <table>
+          <tr>
+            <td><label for="lengthUnits">Dimension Units:</label></td>
+            <td>
+              <select id="lengthUnits" onchange="addTitleToNumberFields()">
+                <option value="mm" selected>Millimeters (mm)</option>
+                <option value="cm">Centimeters (cm)</option>
+                <option value="in">Inches (in)</option>
+              </select>
+            </td>
+            <td>
+                <input type="checkbox" id="advancedToggle" title="Toggle Advanced" onclick="toggleAdvanced()" checked="true">
+            </td>
+          </tr>
+          <tr>
+            <td><label for="length">Length:</label></td>
+            <td><input type="number" id="length" step="any" value="0" required></td>
+            <td class="advanced" style="text-align: center;">+</td>
+            <td class="advanced"><label for="lengthModifier">Length Modifier:</label></td>
+            <td class="advanced"><input type="number" id="lengthModifier" step="any" value="0" required></td>
+            <td class="advanced"><button type="button" id="commitLength" onclick="commit(event)">Commit Modifier</button></td>
+            <td class="advanced"><input type="checkbox" id="lockLength" value="lockLength" title="lock row" onclick="lock(event)"></td>
+          </tr>
+          <tr>
+            <td><label for="width">Width:</label></td>
+            <td><input type="number" id="width" step="any" value="0" required></td>
+            <td class="advanced" style="text-align: center;">+</td>
+            <td class="advanced"><label for="widthModifier">Width Modifier:</label></td>
+            <td class="advanced"><input type="number" id="widthModifier" step="any" value="0"
+                required></td>
+            <td class="advanced"><button type="button" id="commitWidth" onclick="commit(event)">Commit
+                Modifier</button></td>
+            <td class="advanced">
+              <input type="checkbox" id="lockWidth" value="lockWidth"
+                title="lock row" onclick="lock(event)">
+              <!--<label for="lock_width"> Lock</label>-->
+            </td>
+          </tr>
+          <tr>
+            <td><label for="height">Height:</label></td>
+            <td><input type="number" id="height" step="any" value="0" required></td>
+            <td class="advanced" style="text-align: center;">+</td>
+            <td class="advanced"><label for="heightModifier">Height Modifier:</label></td>
+            <td class="advanced"><input type="number" id="heightModifier" step="any" value="0"
+                required></td>
+            <td class="advanced"><button type="button" id="commitHeight" onclick="commit(event)">Commit
+                Modifier</button></td>
+            <td class="advanced"><input type="checkbox" id="lockHeight" value="lockHeight"
+                title="lock row" onclick="lock(event)"></td>
+          </tr>
+          <tr>
+            <td><label for="volumeUnits">Volume Units:</label></td>
+            <td>
+              <select id="volumeUnits" onchange="addTitleToNumberFields()">
+                <option value="mm³">Cubic Millimeters (mm³)</option>
+                <option value="cm³">Cubic Centimeters (cm³)</option>
+                <option value="m³">Cubic Meters (m³)</option>
+                <option value="in³">Cubic Inches (in³)</option>
+                <option value="gallons">Gallons (US gal)</option>
+                <option value="liters" selected>Liters (L)</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="advanced">
+            <td><label for="targetVolume">Volume Target:</label></td>
+            <td><input type="number" id="targetVolume" step="any" value="0"
+                required></td>
+          </tr>
+          <tr>
+            <td><button type="button" id="calculateButton" value="Calculate" onclick="calculateDimensions()">Calculate</button></td>
+            <td class="advanced"><button type="button" id="targetButton" value="Bring to Target" title="Lock a row to prevent changing modifier. Applies proportionally." onclick="calculateTarget()">Bring to Target</button></td>
+          </tr>
+        </table>
+      </form>
+      <br>
+        <div id="resultsDiv">
+            <table id="resultsTable" style="padding-right: 15px;">
+                <tr>
+                    <td>Base Volume: </td>
+                    <td id="baseVolume"></td>
+                </tr>
+                <tr class="advanced">
+                    <td>Percent of Target: </td>
+                    <td id="percentTarget"></td>
+                </tr>
+                </tr>
+                    <td title="Length * Width">Footprint: </td>
+                    <td id="footprint"></td>
+                </tr>
+            </table>
+            <table class="advanced" id="modifierResultsTable" style="padding-right: 15px;">
+                <tr>
+                    <td>Modified Volume:</td>
+                    <td id="modifiedVolume"></td>
+                </tr>
+                <tr>
+                    <td>Percent of Target:</td>
+                    <td id="percentTarget_Modified"></td>
+                </tr>
+                <tr>
+                    <td title="Length * Width">Footprint: </td>
+                    <td id="modifiedFootprint"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="footer">
+      <div id="version"><a href="https://www.github.com" target="_blank">Version: 0.90</a></div>
+      <div id="coffee"><a href="https://www.buymeacoffee.com/biowarejak" target="_blank">Buy Me A Coffee! :D</a></div>
+    </div>
+  </body>
+</html>
