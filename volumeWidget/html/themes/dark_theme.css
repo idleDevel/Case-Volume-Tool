@@ -1,0 +1,82 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #282c34; /* Dark background */
+  color: #fafafa; /* Light text color */
+}
+
+button {
+  background-color: #4e5056; /* Dark gray button color */
+  color: #fafafa; /* Light text color */
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #777b82; /* Lighter gray color on hover */
+  color: white;
+}
+
+button:hover:not(:disabled) {
+  background-color: #777b82; /* Lighter gray color on hover */
+  color: white;
+}
+
+button:disabled {
+  background-color: #242323; /* Gray background for disabled button */
+  color: white; /* Dark gray text */
+  cursor: default;  /*Disable cursor on disabled button */
+}
+
+input[type="checkbox"]:hover::before {
+  background-color: #fafafa; /* Light background */
+  color: #282c34; /* Dark text color */
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="datalist"],
+textarea,
+select,
+datalist {
+  background-color: #fafafa; /* Light background */
+  color: #282c34; /* Dark text color */
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+input[type="number"]:disabled,
+input[type="text"]:disabled,
+input[type="datalist"]:disabled,
+textarea:disabled,
+select:disabled,
+datalist:disabled {
+  background-color: #cccccc; /* Gray background */
+  color: #666666; /* Dark gray text */
+}
+
+.dialog {
+  background-color: #3c4048; /* Dark gray dialog color */
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+a {
+  color: #fafafa; /* Light blue link color */
+  text-decoration: none;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="datalist"],
+textarea,
+select,
+datalist {
+  color: #000000; /* Dark text color */
+}

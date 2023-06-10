@@ -3,7 +3,7 @@
   <head>
     <link rel="stylesheet" type="text/css" href="css\formatting.css">
     <!--<link rel="stylesheet" type="text/css" href="css\default_theme.css">-->
-    <link rel="stylesheet" type="text/css" href="css\dark_theme.css">
+    <link rel="stylesheet" id="themeStyle" type="text/css" href="themes\dark_theme.css">
     <!--This order is important-->
     <script src="js\logging.js"></script>
     <script src="js\utils.js"></script>
@@ -20,6 +20,21 @@
       <div style="display: flex; justify-content: center;">
         <button style="float: left;" onclick="hideAlert()">OK</button>
       </div>
+    </div>
+    <div class="dialog" id="preferences-dialog">
+      <table>
+        <tr>
+          <td><label for="theme">Theme:</label></td>
+          <td>
+            <select id="theme" onchange="selectTheme()">
+              <!--Automatically Populated-->
+            </select>
+          </td>
+        </tr>
+      </table>
+      <br>      
+      <button style="float: left;" onclick="savePreferences()">Save</button>
+      <button style="float: right;" onclick="hidePreferences()">Cancel</button>
     </div>
     <div id="content">
       <form>
@@ -145,7 +160,8 @@
         </div>
     </div>
     <div class="footer">
-      <div id="version"><a href="https://github.com/idleDevel/Case-Volume-Tool" target="_blank">Version: 0.90</a></div>
+      <div id="version"><a href="https://github.com/idleDevel/Case-Volume-Tool" target="_blank">Version: 0.95</a></div>
+      <div id="prefs" onclick="showPreferences()">Preferences</div>
       <div id="coffee"><a href="https://www.buymeacoffee.com/biowarejak" target="_blank">Buy Me A Coffee! :D</a></div>
     </div>
   </body>

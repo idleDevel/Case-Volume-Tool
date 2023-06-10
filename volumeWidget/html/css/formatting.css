@@ -64,4 +64,8 @@ body {
   #coffee {
     padding-right: 5px;
   }
+
+  #prefs {
+    cursor: pointer;
+  }
   

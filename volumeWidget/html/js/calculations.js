@@ -228,6 +228,39 @@ function calculateTarget() {
         }
     } else if (locked == 1) {
         if (lockLength) {
+            var area = targetVolume / modifiedLength;
+            if (area > 0){
+                var ratio = width / height;
+                modifiedHeight = Math.sqrt(area / ratio);
+                modifiedWidth = ratio * modifiedHeight;
+                document.getElementById("widthModifier").value = modifiedWidth - width;
+                document.getElementById("heightModifier").value = modifiedHeight - height;
+            }
+        }
+    
+        if (lockWidth) {
+            var area = targetVolume / modifiedWidth;
+            if (area > 0){
+                var ratio = length / height;
+                modifiedHeight = Math.sqrt(area / ratio);
+                modifiedLength = ratio * modifiedHeight;
+                document.getElementById("lengthModifier").value = modifiedLength - length;
+                document.getElementById("heightModifier").value = modifiedHeight - height;
+            }
+        }
+    
+        if (lockHeight) {
+            var area = targetVolume / modifiedHeight;
+            if (area > 0){
+                var ratio = length / width;
+                modifiedWidth = Math.sqrt(area / ratio);
+                modifiedLength = ratio * modifiedWidth;
+                document.getElementById("lengthModifier").value = modifiedLength - length;
+                document.getElementById("widthModifier").value = modifiedWidth - width;
+            }
+        }
+    }/*else if (locked == 1) {
+        if (lockLength) {
             var a = targetVolume / modifiedLength;
             if (a > 0){
                 modifiedWidth = Math.sqrt(a) - width;
@@ -255,8 +288,8 @@ function calculateTarget() {
                 document.getElementById("lengthModifier").value = modifiedLength;
                 document.getElementById("widthModifier").value = modifiedWidth;
             }
-        }
-    } else if (locked == 0){
+        } 
+    } */else if (locked == 0){
         logToPython("Bringing ALL to Target");
         var v = targetVolume / (length * width * height);
         if (v > 0){

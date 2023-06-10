@@ -175,19 +175,19 @@ function serializeInputValues() {
     var inputValuesString = JSON.stringify(inputValues);
     //console.log(inputValuesString);
     // Call the Python function and pass the JSON string
-    saveInputValues(inputValuesString);
+    saveProjectValues(inputValuesString);
 }
 
-function saveInputValues(data) {
+function saveProjectValues(data) {
     //used by: serializeInputValues
-    pywebview.api.save_json(data)
+    pywebview.api.save_project(data)
 }
 
 function loadInputValues() {
     //used by: ?
     var input_element = document.getElementById('project');
     var selected_value = input_element.value;
-    pywebview.api.load_json(selected_value)
+    pywebview.api.load_project(selected_value)
     //logToPython(selected_value);
     //logToPython("Called Load!");
 }
@@ -221,14 +221,12 @@ function hideConfirmation() {
     confirmationDialog.style.display = "none";
 }
 
-
-
 function performAction() {
     //used by: ?
     hideConfirmation();
     var input_element = document.getElementById('project');
     var selected_value = input_element.value;
-    pywebview.api.delete_json(selected_value);
+    pywebview.api.delete_project(selected_value);
     input_element.value = "";
 }
 
@@ -242,6 +240,51 @@ function hideAlert() {
     //used by: ?
     var alertDialog = document.getElementById("alert-dialog");
     alertDialog.style.display = "none";
+}
+
+function showPreferences() {
+    //used by: ?
+    var preferenceDialog = document.getElementById("preferences-dialog");
+    preferenceDialog.style.display = "block";
+}
+
+function hidePreferences() {
+    //used by: savePreferences
+    var confirmationDialog = document.getElementById("preferences-dialog");
+    confirmationDialog.style.display = "none";
+}
+
+function selectTheme() {
+    //used by: ?
+    var input_element = document.getElementById('theme');
+    var selected_value = input_element.value;
+    logToPython(selected_value);
+    replaceThemeCSS(selected_value);
+}
+
+function replaceThemeCSS(newFilename) {
+    //used by: ?
+    // load new stylesheet
+    var file = document.getElementById("themeStyle");
+    file.href = 'themes/' + newFilename + '.css';
+    
+ }
+
+function savePreferences() {
+    //used by: ?
+    // Get the input values
+    var theme_name = document.getElementById("theme").value;
+    // Save the input values as a JSON object
+    var inputValues = {
+        theme: theme_name
+    };
+    logToPython(inputValues);
+    // Convert the JSON object to a string
+    var inputValuesString = JSON.stringify(inputValues);
+    //console.log(inputValuesString);
+    // Call the Python function and pass the JSON string
+    //saveInputValues(inputValuesString);
+    pywebview.api.save_preferences(inputValuesString);
 }
 
 function clearField() {
