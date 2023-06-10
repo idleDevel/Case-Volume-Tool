@@ -96,7 +96,30 @@ function convertToPreferredVolume(value, preferredUnits) {
         return value;
     }
 }
+function commit(event) {
+    var buttonId = event.target.id;
+    var dimensions = grabfields();
+    if (buttonId == "commitLength") {
+        var length = dimensions.length;
+        var lengthModifier = dimensions.lengthModifier;
+        var modifiedLength = length + lengthModifier;
+        document.getElementById('length').value = modifiedLength;
+        document.getElementById('lengthModifier').value = 0;
 
+    } else if (buttonId == "commitWidth") {
+        var width = dimensions.width;
+        var widthModifier = dimensions.widthModifier;
+        var modifiedWidth = width + widthModifier;
+        document.getElementById('width').value = modifiedWidth;
+        document.getElementById('widthModifier').value = 0;
+    } else if (buttonId == "commitHeight") {
+        var height = dimensions.height;
+        var heightModifier = dimensions.heightModifier;
+        var modifiedHeight = height + heightModifier;
+        document.getElementById('height').value = modifiedHeight;
+        document.getElementById('heightModifier').value = 0;
+    }
+}
 function calculateDimensions() {
     //used by: calculateTarget, 
     // Call the grabfields() function and store the result in a variable
