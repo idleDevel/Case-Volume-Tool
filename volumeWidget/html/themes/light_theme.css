@@ -59,7 +59,7 @@ body {
   
   input[type="number"],
   input[type="text"],
-  input[type="password"],
+  input[type="datalist"],
   textarea,
   select,
   datalist {
@@ -71,7 +71,7 @@ body {
   
   input[type="number"]:disabled,
   input[type="text"]:disabled,
-  input[type="password"]:disabled,
+  input[type="datalist"]:disabled,
   textarea:disabled,
   select:disabled,
   datalist:disabled {
@@ -92,7 +92,7 @@ body {
   
   input[type="number"],
   input[type="text"],
-  input[type="password"],
+  input[type="datalist"],
   textarea,
   select,
   datalist {
