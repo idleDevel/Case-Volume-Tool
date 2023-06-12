@@ -31,7 +31,7 @@ This tool started out as a widget to help with my personal computer case design 
   - Click "OK" on the prompt to proceed or "Cancel" to cancel.
 - Saving a project:
   - Click "Save Project"
-  - There is no autosaving or last-session cache, so remeber to save. 
+  - There is no autosaving or last-session cache, so remember to save. 
 - Preferences:
   - Set theme from the dropdown menu.
   - Set decimal places on results, default is 0.
