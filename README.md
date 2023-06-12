@@ -76,6 +76,7 @@ You are welcome to create pull requests! Scattered in comments are some things t
 - Pull Request Focus Areas:
   - Localization: If you are able to translate the html text to your preferred language, that'd be great. Variable names, element-id's, etc must all remain the same.
   - Accessibility: If you are able to create themes that are better for people with difficulty seeing, be it colors or font size, please do.
+
 Otherwise, I am open to feedback. Please create a post under Discussions. 
 
 ## Acknowledgements
