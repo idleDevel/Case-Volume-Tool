@@ -44,7 +44,7 @@ This tool started out as a widget to help with my personal computer case design 
 You are welcome to create your own! Just copy and modify one of the provided css files in the "themes" subfolder. I look forward to seeing what you make!
 
 ## Releases
-Current Release: 1.0
+Current Release: [1.0](https://github.com/idleDevel/Case-Volume-Tool/releases/tag/v1.0)
 - This represents what should be a core-complete application. Everything works, but there may be some quality-of-life updates. 
 
 The most convenient way to use this without setting up a development environment is by using the releases tab. There you will find the latest version in a .zip file. 
