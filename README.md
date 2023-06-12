@@ -69,6 +69,7 @@ Some clarifications:
 - None of this supersedes the details outlined in the license, please refer to it if you have any questions.
 ## Funding
 There are funding links both in the app and in the Repository. I've spent about 90 hours as of this commit (Version 1.0), so if you feel inclined you are welcome to buy me a coffee :) Please note that donating is entirely optional. If you would like to contribute in other ways, please see Contributing.
+
 While I do have a non-programming day job, as well as several other projects, donations do encourage me to spend time developing features and other tools tailored for case design. Donations do not create an obligation on my part to address any issues you may have with the application or otherwise, they are simply a courtesy. Thank you for your understanding.
 
 ## Contributing
