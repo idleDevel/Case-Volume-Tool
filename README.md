@@ -23,20 +23,25 @@ This tool started out as a widget to help with my personal computer case design 
 ## Use
 Creating a project:
 - Type the name in the box and click "Save Project"
+
 Loading a project:
 - Select the text box and choose the project you want from the dropdown.
 - Typing to filter the list is also an option.
+
 Deleting a project:
 - Load the project and click "Delete Project"
 - Click "OK" on the prompt to proceed or "Cancel" to cancel.
+
 Saving a project:
 - Click "Save Project"
 - There is no autosaving or last-session cache, so remember to save.
+
 Preferences:
 - Set the theme from the dropdown menu.
 - Set decimal places for results, default is 3. Ranges from 0-6.
 - Click "Save" to automatically load these preferences the next time you launch the app.
 - Click "Close" to close the window without saving the changes.
+
 Tooltips:
 - Hover over sections for pertinent information.
 
