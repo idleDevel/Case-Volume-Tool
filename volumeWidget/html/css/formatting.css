@@ -61,11 +61,11 @@ body {
     /* padding: 10px; Add padding for spacing */
   }
   
-  #coffee {
-    padding-right: 5px;
+  .footer div {
+    cursor: pointer;
   }
 
-  #prefs {
-    cursor: pointer;
+  #about {
+    padding-right: 10px;
   }
   

@@ -57,7 +57,7 @@ body {
   }
   
   .dialog {
-    background-color: #e0e0e0; /* Light gray dialog color */
+    background-color: #d1d1d1; /* Light gray dialog color */
     border: 1px solid #ccc;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }

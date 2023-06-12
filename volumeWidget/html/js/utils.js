@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function addTitleToNumberFields() {
-    //used by: DOMContentLoaded listener, 
+    //used by: DOMContentLoaded listener 
     var unitSelect_L = document.getElementById("lengthUnits");
     var selectedUnits_L = unitSelect_L.options[unitSelect_L.selectedIndex].value;
     var unitSelect_V = document.getElementById("volumeUnits");
@@ -24,6 +24,10 @@ function addTitleToNumberFields() {
     numberFields.forEach(function(field) {
         if (field.getAttribute("id") === "targetVolume") {
             var updatedTitle = selectedUnits_V;
+            // Set the updated title attribute
+            field.setAttribute("title", updatedTitle);
+        } else if (field.getAttribute("id") === "decimalPlaces") {
+            var updatedTitle = "Decimal Places";
             // Set the updated title attribute
             field.setAttribute("title", updatedTitle);
         } else {
@@ -242,6 +246,18 @@ function hideAlert() {
     alertDialog.style.display = "none";
 }
 
+function showAbout() {
+    //used by: ?
+    var aboutDialog = document.getElementById("about-dialog");
+    aboutDialog.style.display = "block";
+}
+
+function hideAbout() {
+    //used by: ?
+    var aboutDialog = document.getElementById("about-dialog");
+    aboutDialog.style.display = "none";
+}
+
 function showPreferences() {
     //used by: ?
     var preferenceDialog = document.getElementById("preferences-dialog");
@@ -252,6 +268,15 @@ function hidePreferences() {
     //used by: savePreferences
     var confirmationDialog = document.getElementById("preferences-dialog");
     confirmationDialog.style.display = "none";
+}
+
+//used by: calculateDimensions
+var decimalPlaces = 0;
+function changeDecimal() {
+    // this doesn't like to update onchange, so it is called by calculateDimensions
+    var input_element = document.getElementById('decimalPlaces');
+    var selected_value = input_element.value;
+    decimalPlaces = selected_value;
 }
 
 function selectTheme() {
@@ -274,9 +299,11 @@ function savePreferences() {
     //used by: ?
     // Get the input values
     var theme_name = document.getElementById("theme").value;
+    var decimal_value = document.getElementById("decimalPlaces").value;
     // Save the input values as a JSON object
     var inputValues = {
-        theme: theme_name
+        theme: theme_name, 
+        decimalPlaces: decimal_value
     };
     logToPython(inputValues);
     // Convert the JSON object to a string

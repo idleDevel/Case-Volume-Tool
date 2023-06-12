@@ -60,6 +60,25 @@ function grabfields() {
     };
 }
 
+function convertToPreferedLength(value, preferredUnits) {
+    //used by: calculateTarget
+    //logToPython("Converting Length!");
+    if (preferredUnits == "mm") {
+        logToPython("Defaulting to mm!");
+        return value;
+    } else if (preferredUnits == "cm") {
+        logToPython("Converting to cm!");
+        return value / 10; 
+    } else if (preferredUnits == "in") {
+        logToPython("Converting to in!");
+        return value / 25.4; 
+    } else {
+        // Invalid unit, return the original value
+        logToPython("Invalid Unit");
+        return value;
+    }
+}
+
 function convertToPreferedArea(value, preferredUnits) {
     //used by: calculateDimensions
     logToPython("Converting Area!");
@@ -96,6 +115,7 @@ function convertToPreferredVolume(value, preferredUnits) {
         return value;
     }
 }
+
 function commit(event) {
     var buttonId = event.target.id;
     var dimensions = grabfields();
@@ -120,11 +140,13 @@ function commit(event) {
         document.getElementById('heightModifier').value = 0;
     }
 }
+
 function calculateDimensions() {
     //used by: calculateTarget, 
     // Call the grabfields() function and store the result in a variable
     logToPython("Calculations Called!");
     var dimensions = grabfields();
+    changeDecimal();
     // Convert to base length units, mm for consistency
     var unitSelect_L = document.getElementById("lengthUnits");
     var selectedUnits_L = unitSelect_L.options[unitSelect_L.selectedIndex].value;
@@ -172,7 +194,6 @@ function calculateDimensions() {
     logToPython("Converted to Preferred!");
 
     // Display the results (wip)
-    const decimalPlaces = 3;
     base_volume = base_volume.toFixed(decimalPlaces);
     modified_volume = modified_volume.toFixed(decimalPlaces);
     percent_target = percent_target.toFixed(decimalPlaces);
@@ -214,9 +235,11 @@ function calculateTarget() {
     // Convert to selected volume units
     var unitSelect_V = document.getElementById("volumeUnits");
     var selectedUnits_V = unitSelect_V.options[unitSelect_V.selectedIndex].value;
-    var targetVolume = convertToMm3(dimensions.targetVolume, selectedUnits_V); // Only need to convert this one to mm3
-
+    var targetVolume = convertToMm3(dimensions.targetVolume, selectedUnits_V);
+    
+    // Maybe disable Target button if locked == 3
     if (locked == 2) {
+        logToPython("Locked: 2");
         if (lockLength && lockWidth) {
             var ch = targetVolume / (modifiedLength * modifiedWidth);
             if (ch > 0){
@@ -224,7 +247,8 @@ function calculateTarget() {
                 logToPython(height);
                 logToPython(ch);
                 logToPython(modifiedHeight);
-                document.getElementById("heightModifier").value = modifiedHeight + 0;
+                modifiedHeight = convertToPreferedLength(modifiedHeight, selectedUnits_L);
+                document.getElementById("heightModifier").value = modifiedHeight;
             }
         }
 
@@ -235,6 +259,7 @@ function calculateTarget() {
                 logToPython(width);
                 logToPython(cw);
                 logToPython(modifiedWidth);
+                modifiedWidth = convertToPreferedLength(modifiedWidth, selectedUnits_L);
                 document.getElementById("widthModifier").value = modifiedWidth;
             }
         }
@@ -246,18 +271,24 @@ function calculateTarget() {
                 logToPython(length);
                 logToPython(cl);
                 logToPython(modifiedLength);
+                modifiedLength = convertToPreferedLength(modifiedLength, selectedUnits_L);
                 document.getElementById("widthModifier").value = modifiedLength;
             }
         }
     } else if (locked == 1) {
+        logToPython("Locked: 1");
         if (lockLength) {
             var area = targetVolume / modifiedLength;
             if (area > 0){
                 var ratio = width / height;
                 modifiedHeight = Math.sqrt(area / ratio);
                 modifiedWidth = ratio * modifiedHeight;
-                document.getElementById("widthModifier").value = modifiedWidth - width;
-                document.getElementById("heightModifier").value = modifiedHeight - height;
+                modifiedWidth -= width;
+                modifiedHeight -= height;
+                modifiedHeight = convertToPreferedLength(modifiedHeight, selectedUnits_L);
+                modifiedWidth = convertToPreferedLength(modifiedWidth, selectedUnits_L);
+                document.getElementById("widthModifier").value = modifiedWidth;
+                document.getElementById("heightModifier").value = modifiedHeight;
             }
         }
     
@@ -267,8 +298,12 @@ function calculateTarget() {
                 var ratio = length / height;
                 modifiedHeight = Math.sqrt(area / ratio);
                 modifiedLength = ratio * modifiedHeight;
-                document.getElementById("lengthModifier").value = modifiedLength - length;
-                document.getElementById("heightModifier").value = modifiedHeight - height;
+                modifiedLength -= length;
+                modifiedHeight -= height;
+                modifiedHeight = convertToPreferedLength(modifiedHeight, selectedUnits_L);
+                modifiedLength = convertToPreferedLength(modifiedLength, selectedUnits_L);
+                document.getElementById("lengthModifier").value = modifiedLength;
+                document.getElementById("heightModifier").value = modifiedHeight;
             }
         }
     
@@ -278,47 +313,25 @@ function calculateTarget() {
                 var ratio = length / width;
                 modifiedWidth = Math.sqrt(area / ratio);
                 modifiedLength = ratio * modifiedWidth;
-                document.getElementById("lengthModifier").value = modifiedLength - length;
-                document.getElementById("widthModifier").value = modifiedWidth - width;
-            }
-        }
-    }/*else if (locked == 1) {
-        if (lockLength) {
-            var a = targetVolume / modifiedLength;
-            if (a > 0){
-                modifiedWidth = Math.sqrt(a) - width;
-                modifiedHeight = Math.sqrt(a) - height;
-                document.getElementById("widthModifier").value = modifiedWidth;
-                document.getElementById("heightModifier").value = modifiedHeight;
-            }
-        }
-
-        if (lockWidth) {
-            var a = targetVolume / modifiedWidth;
-            if (a > 0){
-                modifiedLength = Math.sqrt(a) - length;
-                modifiedHeight = Math.sqrt(a) - height;
-                document.getElementById("lengthModifier").value = modifiedLength;
-                document.getElementById("heightModifier").value = modifiedHeight;
-            }
-        }
-
-        if (lockHeight) {
-            var a = targetVolume / modifiedHeight;
-            if (a > 0){
-                modifiedLength = Math.sqrt(a) - length;
-                modifiedWidth = Math.sqrt(a) - width;
+                modifiedLength -= length;
+                modifiedWidth -= width;
+                modifiedWidth = convertToPreferedLength(modifiedWidth, selectedUnits_L);
+                modifiedLength = convertToPreferedLength(modifiedLength, selectedUnits_L);
                 document.getElementById("lengthModifier").value = modifiedLength;
                 document.getElementById("widthModifier").value = modifiedWidth;
             }
-        } 
-    } */else if (locked == 0){
+        }
+    } else if (locked == 0){
+        logToPython("Locked: 0");
         logToPython("Bringing ALL to Target");
         var v = targetVolume / (length * width * height);
         if (v > 0){
             modifiedLength = (length * (Math.cbrt(v))) - length ;
             modifiedWidth = (width * (Math.cbrt(v))) - width;
             modifiedHeight = (height * (Math.cbrt(v))) - height;
+            modifiedLength = convertToPreferedLength(modifiedLength, selectedUnits_L);
+            modifiedWidth = convertToPreferedLength(modifiedWidth, selectedUnits_L);
+            modifiedHeight = convertToPreferedLength(modifiedHeight, selectedUnits_L);
             document.getElementById("lengthModifier").value = modifiedLength;
             document.getElementById("widthModifier").value = modifiedWidth;
             document.getElementById("heightModifier").value = modifiedHeight;

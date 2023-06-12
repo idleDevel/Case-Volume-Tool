@@ -4,22 +4,22 @@ import os
 import json
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
-html_file = os.path.join(dir_path, "html\\index3.html")
+html_file = os.path.join(dir_path, "html\\index.html")
 
-project_folder = 'Projects'
-json_path = os.path.join(dir_path, project_folder)
+projects_folder = 'Projects'
+projects_path = os.path.join(dir_path, projects_folder)
 
 themes_folder = 'html\\themes'
 themes_path = os.path.join(dir_path, themes_folder)
 
-if not os.path.exists(json_path):
+if not os.path.exists(projects_path):
     # Create the "Projects" folder if it doesn't exist
-    os.makedirs(json_path)
+    os.makedirs(projects_path)
 
 
 def populate_list():
     try:
-        files = os.listdir(json_path)
+        files = os.listdir(projects_path)
         files = [file for file in files]
         for key in files:
             filename_without_extension = os.path.splitext(key)[0]
@@ -86,6 +86,9 @@ def apply_preferences():
             if key == "theme":
                 window.evaluate_js("document.querySelector('option[value={0}]').selected = true".format(value))
                 window.evaluate_js("selectTheme();")
+            elif key == "decimalPlaces":
+                window.evaluate_js("document.getElementById('{0}').value = '{1}'".format(key, value))
+                window.evaluate_js("changeDecimal();")
             # room for more options later 
         return
     
@@ -159,7 +162,7 @@ class Api:
         print("Python Loading!")
         print(data)
         try:
-            file_path = os.path.join(json_path, '{0}.json').format(data)
+            file_path = os.path.join(projects_path, '{0}.json').format(data)
         except Exception as e:
             print(e)
         # Check if the file exists
@@ -202,7 +205,7 @@ class Api:
         print("Python Deleting!")
         print(data)
         try:
-            file_path = os.path.join(json_path, '{0}.json').format(data)
+            file_path = os.path.join(projects_path, '{0}.json').format(data)
         except Exception as e:
             print(e)
         # Check if the file exists
@@ -250,6 +253,16 @@ class Api:
         elif value == "large":
             window.resize(815, 430)
 
+#Possibly useful for a toggle resize option in preferences
+""" 
+def on_resized(width, height):
+    print('pywebview window is resized. new dimensions are {width} x {height}'.format(width=width, height=height))
+    if window.resizable == True:
+        if width < 815 and height < 430:
+            window.set_wind = False
+        #hide advanced
+"""
+
 def start():
     populate_list()
     populate_themes()
@@ -258,4 +271,5 @@ def start():
 if __name__ == '__main__':
     api = Api()
     window = webview.create_window('Case Volume Tool', html_file, min_size=(380, 370), width=815, height=430, js_api=api, on_top=False, text_select=True, resizable=False)
+    #window.events.resized += on_resized #enables on_resized
     webview.start(start)
