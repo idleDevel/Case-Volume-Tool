@@ -6,7 +6,7 @@ A portable Pywebview app for helping quickly define case volume for design consi
 This tool started out as a widget to help with my personal computer case design projects. It has enabled me to more easily adjust values with my CAD pulled up, as opposed to spreadsheets and online calculators, and ultimately I can't imagine using something else now. The "Always On Top" functionality is especially clutch for use with CAD. 
 
 ## Features
-![image](https://github.com/idleDevel/Case-Volume-Tool/assets/20792330/1e7db816-c08d-4c95-aa2a-49b134e3f523)
+![image](https://github.com/idleDevel/Case-Volume-Tool/assets/20792330/0ffa7734-b24d-4c45-96b7-f94c4c6211fb)
 
 - Project Loading, Saving, and Deleting
 - Always On Top toggle
@@ -18,7 +18,7 @@ This tool started out as a widget to help with my personal computer case design 
   - Option to commit any changes to the base value
 -  Hiding "advanced" features to make the menu smaller 
 
-![image](https://github.com/idleDevel/Case-Volume-Tool/assets/20792330/55c17296-e556-4b6b-a401-23fa9222a0c3)
+![image](https://github.com/idleDevel/Case-Volume-Tool/assets/20792330/caa6bc2e-e870-45d3-bfe9-e1529709549d)
 
 ## Use
 - Creating a project:
