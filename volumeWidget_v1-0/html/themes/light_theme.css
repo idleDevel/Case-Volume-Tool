@@ -1,0 +1,101 @@
+/*
+light_theme.css
+
+This stylesheet provides theme styling to the index file.
+
+Author: Jakob Edwards (Github: @idleDevel) (SFF Forum: @Biowarejak)
+
+License: GPL-3.0
+
+This stylesheet is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This stylesheet is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this stylesheet. If not, see <https://www.gnu.org/licenses/>.
+*/
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fafafa; /* Light background */
+    color: #282c34; /* Dark text color */
+  }
+  
+  button {
+    background-color: #e0e0e0; /* Light gray button color */
+    color: #282c34; /* Dark text color */
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  button:hover:not(:disabled) {
+    background-color: #ccc; /* Light gray color on hover */
+    color: #fafafa; /* Light text color */
+  }
+  
+  button:disabled {
+    background-color: #cccccc; /* Gray background for disabled button */
+    color: #666666; /* Dark gray text */
+    cursor: default; /*Disable cursor on disabled button */
+  }
+  
+  input[type="checkbox"]:hover::before {
+    background-color: #282c34; /* Dark background */
+    color: #fafafa; /* Light text color */
+    font-size: 14px;
+    border-radius: 4px;
+  }
+  
+  input[type="number"],
+  input[type="text"],
+  input[type="password"],
+  textarea,
+  select,
+  datalist {
+    background-color: #fafafa; /* Light background */
+    color: #282c34; /* Dark text color */
+    font-size: 14px;
+    border-radius: 4px;
+  }
+  
+  input[type="number"]:disabled,
+  input[type="text"]:disabled,
+  input[type="password"]:disabled,
+  textarea:disabled,
+  select:disabled,
+  datalist:disabled {
+    background-color: #cccccc; /* Gray background */
+    color: #666666; /* Dark gray text */
+  }
+  
+  .dialog {
+    background-color: #d1d1d1; /* Light gray dialog color */
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  a {
+    color: #282c34; /* Dark blue link color */
+    text-decoration: none;
+  }
+  
+  input[type="number"],
+  input[type="text"],
+  input[type="password"],
+  textarea,
+  select,
+  datalist {
+    color: #282c34; /* Dark text color */
+  }
+  

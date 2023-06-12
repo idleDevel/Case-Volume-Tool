@@ -1,0 +1,95 @@
+/*
+formatting.css
+
+This stylesheet provides core styling to the index file.
+
+Author: Jakob Edwards (Github: @idleDevel) (SFF Forum: @Biowarejak)
+
+License: GPL-3.0
+
+This stylesheet is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This stylesheet is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this stylesheet. If not, see <https://www.gnu.org/licenses/>.
+*/
+
+
+body {
+    overflow: hidden;
+    resize: none;
+  }
+  
+  input[type="checkbox"]:hover::before {
+    content: attr(title);
+    position: absolute;
+    padding: 4px 8px;
+    top: 100%;
+    left: 0;
+    white-space: nowrap;
+    z-index: 1;
+  }
+  
+  .dialog {
+    display: none;
+    position: fixed;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  #confirmation-dialog p {
+    margin: 0 0 10px;
+  }
+  
+  #confirmation-dialog button {
+    margin-right: 10px;
+  }
+  #alert-dialog { 
+    justify-content: center;
+  }
+  select {
+    min-width: 100%;
+  }
+  
+  #resultsDiv{
+    width: fit-content;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+  }
+  
+  #resultsDiv td{
+    min-width: 150px;
+  }
+  
+  .header button {
+    width: 100%;
+  }
+  
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 99vw;
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Space items evenly */
+    align-items: center; /* Center items vertically */
+    /* padding: 10px; Add padding for spacing */
+  }
+  
+  .footer div {
+    cursor: pointer;
+  }
+
+  #about {
+    padding-right: 10px;
+  }
+  

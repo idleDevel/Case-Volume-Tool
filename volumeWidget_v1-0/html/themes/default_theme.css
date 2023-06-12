@@ -1,0 +1,47 @@
+/*
+default_theme.css
+
+This stylesheet provides theme styling to the index file.
+
+Author: Jakob Edwards (Github: @idleDevel) (SFF Forum: @Biowarejak)
+
+License: GPL-3.0
+
+This stylesheet is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This stylesheet is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this stylesheet. If not, see <https://www.gnu.org/licenses/>.
+*/
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+    color: #000;
+  }
+  
+  input[type="checkbox"]:hover::before {
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+  
+  .dialog {
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+  
